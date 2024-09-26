@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button"
 
 import * as React from 'react'
 
-const correctPassword = '89poker'
+const correctPassword = 'allin'
 
 interface TitleProps {
     onSuccess: () => void
