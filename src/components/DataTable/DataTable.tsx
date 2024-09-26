@@ -24,8 +24,17 @@ export function DataTable({title, tableHeaders, tableBody}: DataTableProps) {
                 <TableBody className='border-none'>
                     {tableBody.map((row) => (
                         <TableRow className='border-none'>
-                            {Object.values(row).map((val) => (
-                                <TableCell className='table-cell-hover border-none'>{val}</TableCell>
+                            {Object.values(row).map((val, i) => (
+                                // If index is the last one (it represents rank) AND the value starts with a 1 (since we will never go double-digits), then add a star
+                                <TableCell className='table-cell-hover border-none'>
+                                    {val}
+                                    {i === tableHeaders.length - 1 && val?.toString().startsWith('1') ?
+                                    <img 
+                                        src="src/assets/star.png" 
+                                        alt="Star Icon" 
+                                        className="inline-block ml-1 align-middle" // Adjust margin as needed
+                                    /> : null}
+                                </TableCell>
                             ))}
                         </TableRow>
                     ))}
