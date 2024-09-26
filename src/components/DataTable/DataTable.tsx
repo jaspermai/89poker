@@ -16,23 +16,23 @@ export function DataTable({title, tableHeaders, tableBody}: DataTableProps) {
             <Table className='table-font text-lg text-center w-full max-w-6xl mx-auto'>
                 <TableHeader className='font-semibold border-2'>
                     <TableRow>
-                        {tableHeaders.map((header) => (
-                            <TableCell className='table-cell-hover'>{header}</TableCell>
+                        {tableHeaders.map((header, index) => (
+                            <TableCell key={index} className='table-cell-hover'>{header}</TableCell>
                         ))}
                     </TableRow>
                 </TableHeader>
                 <TableBody className='border-none'>
-                    {tableBody.map((row) => (
-                        <TableRow className='border-none'>
+                    {tableBody.map((row, rowIndex) => (
+                        <TableRow key={rowIndex} className='border-none'>
                             {Object.values(row).map((val, i) => (
                                 // If index is the last one (it represents rank) AND the value starts with a 1 (since we will never go double-digits), then add a star
-                                <TableCell className='table-cell-hover border-none'>
+                                <TableCell key={i} className='table-cell-hover border-none'>
                                     {val}
                                     {i === tableHeaders.length - 1 && val?.toString().startsWith('1') ?
                                     <img 
-                                        src="src/assets/star.png" 
-                                        alt="Star Icon" 
-                                        className="inline-block ml-1 align-middle" // Adjust margin as needed
+                                        src='/star.png'
+                                        alt="star" 
+                                        className="inline-block ml-1 align-middle"
                                     /> : null}
                                 </TableCell>
                             ))}

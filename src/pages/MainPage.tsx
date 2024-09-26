@@ -34,11 +34,11 @@ function MainPage() {
 
   useEffect(() => {
     if (!(loading || error) && data) {
-      const { leaderboard, history } = processData(data);
-      setLeaderboard(leaderboard);
-      setHistory(history);
+        const { leaderboard, history } = processData(data);
+        setLeaderboard(leaderboard);
+        setHistory(history);
     }
-  }), [data, loading, error];
+  }, [data, loading, error]);
   
   return (
     <div className="App">
