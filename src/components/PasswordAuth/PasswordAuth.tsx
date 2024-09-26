@@ -12,7 +12,6 @@ interface TitleProps {
 
 export function PasswordAuth({onSuccess}: TitleProps) {
     const [passwordVal, setPasswordVal] = React.useState('')
-    console.log(passwordVal)
     
     const checkPassword = () => {
         if(passwordVal === correctPassword) {
