@@ -49,4 +49,6 @@ export default tseslint.config({
 })
 ```
 
-deploy to CloudFlare: `npx wrangler pages deploy dist`
+deploy to CloudFlare: 
+1. `npm run build`
+2. `npx wrangler pages deploy dist`
