@@ -13,7 +13,7 @@ function Landing() {
 
   return (
     <div className="App">
-      <div className="h-screen bg-cover flex flex-col items-center justify-center px-5">
+      <div className="h-screen bg-cover flex flex-col items-center justify-center px-5 overflow-hidden">
         <Title className="title-hover"/>
         <Subtitle text='INVITE ONLY' className="mt-1 mb-32" />
         <PasswordAuth onSuccess={onSuccess} />
