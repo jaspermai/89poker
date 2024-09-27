@@ -9,7 +9,7 @@ interface DataTableProps {
 
 export function DataTable({title, tableHeaders, tableBody}: DataTableProps) {
     return(
-        <div className='my-24'>
+        <div className='my-24 px-4'>
             <div className='table-title-font text-4xl text-center my-4'>
                 - {title} -
             </div>
