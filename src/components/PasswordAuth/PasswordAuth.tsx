@@ -29,16 +29,16 @@ export function PasswordAuth({onSuccess}: TitleProps) {
 
     return(
         <div className="grid w-[90%] max-w-[600px] items-center justify-center gap-1">
-            <Label className="text-2xl w-full justify-start" htmlFor="password">PASSWORD</Label>
+            <Label className="text-1xl md:text-2xl w-full justify-start" htmlFor="password">PASSWORD</Label>
             <Input 
-                className="bg-white text-black w-full text-lg min-w-[300px] md:min-w-[400px]" 
+                className="bg-white text-black table-font w-full text-lg min-w-[300px] md:min-w-[400px]" 
                 value={passwordVal}
                 onChange={(e) => setPasswordVal(e.target.value)}
                 onKeyDown={onEnterKeyDown}
                 type="password"
             />
             <div className="w-full flex justify-end">
-                <Button className="text-2xl hover:opacity-70 pr-1" onClick={checkPassword}>
+                <Button className="text-1xl md:text-2xl hover:opacity-70 pr-1" onClick={checkPassword}>
                     ENTER
                 </Button>
             </div>

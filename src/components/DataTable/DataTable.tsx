@@ -10,10 +10,10 @@ interface DataTableProps {
 export function DataTable({title, tableHeaders, tableBody}: DataTableProps) {
     return(
         <div className='my-24 px-4'>
-            <div className='table-title-font text-4xl text-center my-4'>
+            <div className='table-title-font text-2xl md:text-4xl text-center my-4'>
                 - {title} -
             </div>
-            <Table className='table-font text-lg text-center w-full max-w-6xl mx-auto'>
+            <Table className='table-font text-md md:text-lg text-center w-full max-w-6xl mx-auto'>
                 <TableHeader className='font-semibold border-2'>
                     <TableRow>
                         {tableHeaders.map((header, index) => (
