@@ -46,7 +46,7 @@ function MainPage() {
         <Title/>
         {leaderboard && history &&
            <>
-            <DataTable title='LEADERBOARD' tableHeaders={leaderboardHeaders} tableBody={leaderboard}/>
+            <DataTable title='LEADERBOARD' tableHeaders={leaderboardHeaders} tableBody={leaderboard} blurIndex={1}/>
             <DataTable title='MATCH HISTORY' tableHeaders={historyHeaders} tableBody={history}/>
            </>
         }

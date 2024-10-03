@@ -5,9 +5,10 @@ interface DataTableProps {
     tableHeaders: Array<string>;
     tableBody: Array<{ [key: string]: string | number | null }>;
     // tableBody will be in the form of [{a: x, b: y, c: z}, {a: x, b: y, c: z}, ...]
+    blurIndex?: number;
 }
 
-export function DataTable({title, tableHeaders, tableBody}: DataTableProps) {
+export function DataTable({title, tableHeaders, tableBody, blurIndex}: DataTableProps) {
     return(
         <div className='my-24 px-4'>
             <div className='table-title-font text-2xl md:text-4xl text-center my-4'>
@@ -26,7 +27,7 @@ export function DataTable({title, tableHeaders, tableBody}: DataTableProps) {
                         <TableRow key={rowIndex} className='border-none'>
                             {Object.values(row).map((val, i) => (
                                 // If index is the last one (it represents rank) AND the value starts with a 1 (since we will never go double-digits), then add a star
-                                <TableCell key={i} className='table-cell-hover border-none'>
+                                <TableCell key={i} className={`table-cell-hover border-none ${blurIndex && blurIndex === i ? 'table-cell-blur' : '' }`}>
                                     {val}
                                     {i === tableHeaders.length - 1 && val?.toString().startsWith('1') ?
                                     <img 

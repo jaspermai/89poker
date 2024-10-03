@@ -256,3 +256,16 @@ body {
 .table-cell-hover:hover {
   transform: scale(1.2); /* Enlarge text on hover */
 }
+
+.table-cell-blur {
+  filter: blur(3.5px);
+  
+}
+
+.table-cell-blur:hover{
+  filter: blur(0px);
+}
+
+.table-cell-blur:active{
+  filter: blur(0px);
+}
