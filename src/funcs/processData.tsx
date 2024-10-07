@@ -4,7 +4,7 @@ interface SheetData {
     player: string;
     date: string;
     'buy-in amount': string;
-    '# buy-ins': string;
+    'money-in': string;
     'money-out': string;
     'daily +/-': string;
 }
@@ -22,7 +22,7 @@ interface HistoryEntry {
     date: string;
     player: string;
     buyIn: string;
-    moneyIn: string;
+    numBuyIn: string;
     moneyOut: string;
     daily: string;
     dailyRank: string;
@@ -47,7 +47,10 @@ export function processData(rawData: Sheet[]) {
         const date = obj.date;
         const player = obj.player;
         const buyIn = obj['buy-in amount'];
-        const moneyIn = (+(obj['# buy-ins']) * +(obj['buy-in amount'])).toFixed(2);
+        const numBuyIn = +(obj['money-in']) / +(obj['buy-in amount']);
+        console.log(numBuyIn)
+        console.log(obj['money-in'])
+        console.log(obj['buy-in amount'])
         const moneyOut = obj['money-out'];
         const daily = obj['daily +/-'];
 
@@ -72,7 +75,7 @@ export function processData(rawData: Sheet[]) {
             date: date,
             player: player,
             buyIn: buyIn,
-            moneyIn: moneyIn,
+            numBuyIn: numBuyIn.toString(),
             moneyOut: moneyOut,
             daily: daily,
             dailyRank: '-' // TO-DO

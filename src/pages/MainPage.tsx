@@ -9,6 +9,7 @@ import { DataTable } from '../components/DataTable/DataTable';
 
 const API_KEY = 'AIzaSyAlLoHAWIMDgi0Kj572ZGdwRGqGf9aPkPc'
 const SHEET_ID = '1BpUeQsOB3j8pVu096EWk9WALSsGghbps0wJTOo67JYk'
+const SHEET_PAGE_NAME = 'main'
 
 
 function MainPage() {
@@ -16,14 +17,14 @@ function MainPage() {
   const [history, setHistory] = useState<any[] | null>(null)
 
   const leaderboardHeaders = ['Player', 'Total +/-', 'Last Active', 'Total Rank']
-  const historyHeaders = ['Date', 'Player', 'Buy-In', 'Money-In', 'Money-Out', 'Daily +/-', 'Daily Rank']
+  const historyHeaders = ['Date', 'Player', 'Buy-In', '# Buy-Ins', 'Money-Out', 'Daily +/-', 'Daily Rank']
 
 
   // Fetch data from Google Sheets
   const { data, loading, error } = useGoogleSheets({
     apiKey: API_KEY,
     sheetId: SHEET_ID,
-    sheetsOptions: [{ id: 'main' }],
+    sheetsOptions: [{ id: SHEET_PAGE_NAME }],
   });
   if (loading) {
     console.log('loading');
