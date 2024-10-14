@@ -109,7 +109,7 @@ export function processData(rawData: Sheet[]) {
 
     // (2) Update history dailyRank
     // For each date in historyByDate, sort by daily +/- and update dailyRank
-    // If dailyRank is not 1, then remove date value
+    // If dailyRank is not 1, then remove buy-in and date values
     Object.keys(historyByDate).forEach((date) => {
         const historyEntries = historyByDate[date];
         const totalPlayers = historyEntries.length;
@@ -125,7 +125,8 @@ export function processData(rawData: Sheet[]) {
             }
             historyEntries[i].dailyRank = `${rank} of ${totalPlayers}`;
             if (i !== 0) {
-                historyEntries[i].date = '---';
+                historyEntries[i].buyIn = '-';
+                historyEntries[i].date = '-';
             }
         }
     });
