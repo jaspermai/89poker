@@ -109,10 +109,11 @@ export function processData(rawData: Sheet[]) {
 
     // (2) Update history dailyRank
     // For each date in historyByDate, sort by daily +/- and update dailyRank
+    // If dailyRank is not 1, then remove date value
     Object.keys(historyByDate).forEach((date) => {
         const historyEntries = historyByDate[date];
         const totalPlayers = historyEntries.length;
-
+        
         historyEntries.sort((a, b) => +(b.daily) - +(a.daily))
 
         let rank = 1;
@@ -123,6 +124,9 @@ export function processData(rawData: Sheet[]) {
                 rank = numPlayer;
             }
             historyEntries[i].dailyRank = `${rank} of ${totalPlayers}`;
+            if (i !== 0) {
+                historyEntries[i].date = '---';
+            }
         }
     });
     // Using the datesSorted array, iterate through the historyByDate dictionary one at a time and add to result history array
