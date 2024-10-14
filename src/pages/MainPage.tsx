@@ -16,8 +16,8 @@ function MainPage() {
   const [leaderboard, setLeaderboard] = useState<any[] | null>(null)
   const [history, setHistory] = useState<any[] | null>(null)
 
-  const leaderboardHeaders = ['Player', 'Total +/-', 'Last Active', 'Total Rank']
-  const historyHeaders = ['Date', 'Player', 'Buy-In', '# Buy-Ins', 'Money-Out', 'Daily +/-', 'Daily Rank']
+  const leaderboardHeaders = ['Total Rank', 'Player', 'Total +/-', '# of Games', 'Last Active']
+  const historyHeaders = ['Daily Rank', 'Player', 'Buy-In', '# Buy-Ins', 'Money-Out', 'Daily +/-', 'Date']
 
 
   // Fetch data from Google Sheets
@@ -47,7 +47,7 @@ function MainPage() {
         <Title/>
         {leaderboard && history &&
            <>
-            <DataTable title='LEADERBOARD' tableHeaders={leaderboardHeaders} tableBody={leaderboard} blurIndex={1}/>
+            <DataTable title='LEADERBOARD' tableHeaders={leaderboardHeaders} tableBody={leaderboard} blurIndex={2}/>
             <DataTable title='MATCH HISTORY' tableHeaders={historyHeaders} tableBody={history}/>
            </>
         }

@@ -11,21 +11,22 @@ interface SheetData {
 
 // Interface of each entry in the leaderboard return array
 interface LeaderboardEntry {
+    totalRank: string;
     player: string;
     total: string;
+    numGames: string;
     date: string;
-    totalRank: string;
 }
 
 // Interface of each entry in the history return array
 interface HistoryEntry {
+    dailyRank: string;
     date: string;
     player: string;
     buyIn: string;
     numBuyIn: string;
     moneyOut: string;
     daily: string;
-    dailyRank: string;
 }
 
 export function processData(rawData: Sheet[]) {
@@ -59,26 +60,28 @@ export function processData(rawData: Sheet[]) {
         if (playerEntry) {
             playerEntry.total = (+(playerEntry.total) + +(daily)).toFixed(2);
             playerEntry.date = date;
+            playerEntry.numGames = (+playerEntry.numGames + 1).toString();
         }
         else {
             leaderboard.push({
+                totalRank: '-', // will be updated later,
                 player: player,
                 total: (+daily).toFixed(2),
-                date: date,
-                totalRank: '-' // will be updated later
+                numGames: '1',
+                date: date
             })
         }
 
         // (2) Add each data entry to history dictionary
         // history dictionary is used to sort by date played {date: {obj}}
         const historyEntry = {
-            date: date,
+            dailyRank: '-', // TO-DO
             player: player,
             buyIn: buyIn,
             numBuyIn: numBuyIn.toString(),
             moneyOut: moneyOut,
             daily: daily,
-            dailyRank: '-' // TO-DO
+            date: date
         }
 
         if (historyByDate[date]) {

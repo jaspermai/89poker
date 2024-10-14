@@ -26,10 +26,10 @@ export function DataTable({title, tableHeaders, tableBody, blurIndex}: DataTable
                     {tableBody.map((row, rowIndex) => (
                         <TableRow key={rowIndex} className='border-none'>
                             {Object.values(row).map((val, i) => (
-                                // If index is the last one (it represents rank) AND the value is 1 exact or starts with a '1 ' (ie. daily rank), then add a star
+                                // If index is the first one (it represents rank) AND the value is 1 exact or starts with a '1 ' (ie. daily rank), then add a star
                                 <TableCell key={i} className={`table-cell-hover border-none ${blurIndex && blurIndex === i ? 'table-cell-blur' : '' }`}>
                                     {val}
-                                    {i === tableHeaders.length - 1 && (val?.toString() === '1' || val?.toString().startsWith('1 ')) ?
+                                    {i === 0 && (val?.toString() === '1' || val?.toString().startsWith('1 ')) ?
                                     <img 
                                         src='/star.png'
                                         alt="star" 
