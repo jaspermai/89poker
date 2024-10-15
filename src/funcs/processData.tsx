@@ -25,7 +25,6 @@ interface HistoryEntry {
     player: string;
     buyIn: string;
     numBuyIn: string;
-    moneyOut: string;
     daily: string;
 }
 
@@ -49,10 +48,6 @@ export function processData(rawData: Sheet[]) {
         const player = obj.player;
         const buyIn = obj['buy-in amount'];
         const numBuyIn = +(obj['money-in']) / +(obj['buy-in amount']);
-        console.log(numBuyIn)
-        console.log(obj['money-in'])
-        console.log(obj['buy-in amount'])
-        const moneyOut = obj['money-out'];
         const daily = obj['daily +/-'];
 
         // (1) Add each data entry to leaderboard calculations
@@ -79,7 +74,6 @@ export function processData(rawData: Sheet[]) {
             player: player,
             buyIn: buyIn,
             numBuyIn: numBuyIn.toString(),
-            moneyOut: moneyOut,
             daily: daily,
             date: date
         }

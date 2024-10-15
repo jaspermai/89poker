@@ -17,7 +17,7 @@ function MainPage() {
   const [history, setHistory] = useState<any[] | null>(null)
 
   const leaderboardHeaders = ['Total Rank', 'Player', 'Total +/-', '# of Games', 'Last Active']
-  const historyHeaders = ['Daily Rank', 'Player', 'Buy-In', '# of Buy-Ins', 'Money-Out', 'Daily +/-', 'Date']
+  const historyHeaders = ['Daily Rank', 'Player', 'Buy-In', '# of Buy-Ins', 'Daily +/-', 'Date']
 
 
   // Fetch data from Google Sheets
