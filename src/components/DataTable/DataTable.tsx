@@ -9,14 +9,14 @@ interface DataTableProps {
     tableBody: Array<{ [key: string]: string | number | null }>;
     // tableBody will be in the form of [{a: x, b: y, c: z}, {a: x, b: y, c: z}, ...]
     blurIndex?: number;
-    isFilterByName?: boolean;
+    isMatchHistory?: boolean;
 }
 
-export function DataTable({title, tableHeaders, tableBody, blurIndex, isFilterByName}: DataTableProps) {
-    // IF FilterByName IS ENABLED
+export function DataTable({title, tableHeaders, tableBody, blurIndex, isMatchHistory}: DataTableProps) {
+    // If isMatchHistory, then add filter by Name option
     const [filterName, setFilterName] = useState<string>('')
 
-    const filteredTableBody = isFilterByName && filterName !== ''
+    const filteredTableBody = isMatchHistory && filterName !== ''
         ? tableBody.filter(row => {
             const rowValues = Object.values(row); // Get the row values as an array
             return rowValues[1]?.toString().toLowerCase().includes(filterName.toString().toLowerCase());
@@ -29,7 +29,7 @@ export function DataTable({title, tableHeaders, tableBody, blurIndex, isFilterBy
                 - {title} -
             </div>
             <div className='w-full max-w-6xl mx-auto'>
-                {isFilterByName && 
+                {isMatchHistory && 
                     <div className="flex justify-end mb-4">
                         <Input 
                             className="bg-white text-black table-font text-sm md:text-base w-28 md:w-44 p-2 border rounded-lg"

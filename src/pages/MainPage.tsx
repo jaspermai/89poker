@@ -48,7 +48,7 @@ function MainPage() {
         {leaderboard && history &&
            <>
             <DataTable title='LEADERBOARD' tableHeaders={leaderboardHeaders} tableBody={leaderboard} blurIndex={2}/>
-            <DataTable title='MATCH HISTORY' tableHeaders={historyHeaders} tableBody={history} isFilterByName={true}/>
+            <DataTable title='MATCH HISTORY' tableHeaders={historyHeaders} tableBody={history} isMatchHistory={true}/>
            </>
         }
       </div>
