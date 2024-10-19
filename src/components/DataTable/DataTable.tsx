@@ -25,14 +25,14 @@ export function DataTable({title, tableHeaders, tableBody, blurIndex, isFilterBy
     
     return(
         <div className='my-24 px-4'>
-            <div className='table-title-font text-2xl md:text-4xl text-center my-4'>
+            <div className='table-title-font text-3xl md:text-4xl text-center my-4'>
                 - {title} -
             </div>
             <div className='w-full max-w-6xl mx-auto'>
                 {isFilterByName && 
                     <div className="flex justify-end mb-4">
                         <Input 
-                            className="bg-white text-black table-font text-md md:text-lg w-48 md:w-56 p-2 border rounded-lg"
+                            className="bg-white text-black table-font text-sm md:text-base w-28 md:w-44 p-2 border rounded-lg"
                             value={filterName}
                             onChange={(e) => setFilterName(e.target.value)}
                             placeholder="Filter by player"
