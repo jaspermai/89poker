@@ -250,11 +250,11 @@ body {
 }
 
 .table-cell-hover {
-  transition: transform 0.2s ease; /* Smooth transition for scaling */
+  transition: transform 0.2s ease;
 }
 
 .table-cell-hover:hover {
-  transform: scale(1.2); /* Enlarge text on hover */
+  transform: scale(1.2);
 }
 
 .table-cell-blur {

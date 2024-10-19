@@ -118,10 +118,11 @@ export function processData(rawData: Sheet[]) {
                 rank = numPlayer;
             }
             historyEntries[i].dailyRank = `${rank} of ${totalPlayers}`;
-            if (i !== 0) {
-                historyEntries[i].buyIn = '-';
-                historyEntries[i].date = '-';
-            }
+            // THIS COMMENTED OUT CODE REMOVES BUY-IN AND DATE IF NOT FIRST PLACE AND REPLACES WITH  '-'
+            // if (i !== 0) {
+            //     historyEntries[i].buyIn = '-';
+            //     historyEntries[i].date = '-';
+            // }
         }
     });
     // Using the datesSorted array, iterate through the historyByDate dictionary one at a time and add to result history array
