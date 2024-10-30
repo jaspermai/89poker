@@ -23,15 +23,15 @@ export function DataTable({title, tableHeaders, tableBody, blurIndex, isMatchHis
         })
         : tableBody;
     
-    return(
+    return (
         <div className='my-24 px-4'>
             <div className='table-title-font text-3xl md:text-4xl text-center my-4'>
                 - {title} -
             </div>
             <div className='w-full max-w-6xl mx-auto'>
-                {isMatchHistory && 
+                {isMatchHistory &&
                     <div className="flex justify-end mb-4">
-                        <Input 
+                        <Input
                             className="bg-white text-black table-font text-sm md:text-base w-28 md:w-44 p-2 border rounded-lg"
                             value={filterName}
                             onChange={(e) => setFilterName(e.target.value)}
@@ -49,21 +49,33 @@ export function DataTable({title, tableHeaders, tableBody, blurIndex, isMatchHis
                             </TableRow>
                         </TableHeader>
                         <TableBody className='border-none'>
-                            {filteredTableBody.map((row, rowIndex) => (
-                                <TableRow key={rowIndex} className='border-none'>
-                                    {Object.values(row).map((val, i) => (
-                                        <TableCell key={i} className={`table-cell-hover border-none ${blurIndex && blurIndex === i ? 'table-cell-blur' : '' }`}>
-                                            {val}
-                                            {i === 0 && (val?.toString() === '1' || val?.toString().startsWith('1 ')) ?
-                                            <img 
-                                                src='/star.png'
-                                                alt="star" 
-                                                className="inline-block ml-1 align-middle"
-                                            /> : null}
-                                        </TableCell>
-                                    ))}
-                                </TableRow>
-                            ))}
+                            {filteredTableBody.map((row, rowIndex) => {
+                                const previousDate = rowIndex > 0 ? filteredTableBody[rowIndex - 1].date : null;
+                                const isNewDate = rowIndex > 0 && row.date !== previousDate;
+
+                                return (
+                                    <>
+                                        {isMatchHistory && isNewDate && (
+                                            <TableRow className=''>
+                                                <TableCell colSpan={tableHeaders.length} className='py-0.5'/>
+                                            </TableRow>
+                                        )}
+                                        <TableRow key={rowIndex} className='border-none'>
+                                            {Object.values(row).map((val, i) => (
+                                                <TableCell key={i} className={`table-cell-hover border-none ${blurIndex && blurIndex === i ? 'table-cell-blur' : '' }`}>
+                                                    {val}
+                                                    {i === 0 && (val?.toString() === '1' || val?.toString().startsWith('1 ')) ?
+                                                        <img
+                                                            src='/star.png'
+                                                            alt="star"
+                                                            className="inline-block ml-1 align-middle"
+                                                        /> : null}
+                                                </TableCell>
+                                            ))}
+                                        </TableRow>
+                                    </>
+                                );
+                            })}
                         </TableBody>
                     </Table>
                 </div>
