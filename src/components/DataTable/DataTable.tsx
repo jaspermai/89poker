@@ -1,7 +1,6 @@
 import { Table, TableBody, TableCell, TableHeader, TableRow} from "@/components/ui/table"
-import { Input } from "@/components/ui/input"
-
-import { useState } from 'react';
+import { Dropdown } from "@/components/Dropdown/Dropdown"
+import { useMemo, useState } from 'react';
 
 interface DataTableProps {
     title: string;
@@ -16,10 +15,25 @@ export function DataTable({title, tableHeaders, tableBody, blurIndex, isMatchHis
     // If isMatchHistory, then add filter by Name option
     const [filterName, setFilterName] = useState<string>('')
 
+    // Generate list of player nameswhen isMatchHistory is true
+    const playerNames = useMemo(() => {
+        let names: string[] = [];
+        if (isMatchHistory) {
+            const uniquePlayers = new Set<string>();
+            tableBody.forEach(row => {
+                const playerName = row['player'];
+                if (playerName) uniquePlayers.add(playerName.toString());
+            });
+            
+            names = Array.from(uniquePlayers).sort((a, b) => a.localeCompare(b));
+        }
+        return names;
+    }, [tableBody, isMatchHistory]);
+
     const filteredTableBody = isMatchHistory && filterName !== ''
         ? tableBody.filter(row => {
             const rowValues = Object.values(row); // Get the row values as an array
-            return rowValues[1]?.toString().toLowerCase().includes(filterName.toString().toLowerCase());
+            return rowValues[1]?.toString().toLowerCase() === filterName.toString().toLowerCase();
         })
         : tableBody;
     
@@ -31,11 +45,11 @@ export function DataTable({title, tableHeaders, tableBody, blurIndex, isMatchHis
             <div className='w-full max-w-6xl mx-auto'>
                 {isMatchHistory &&
                     <div className="flex justify-end mb-4">
-                        <Input
-                            className="bg-white text-black table-font text-sm md:text-base w-28 md:w-44 p-2 border rounded-lg"
+                        <Dropdown
+                            buttonClassName="bg-white text-black table-font text-sm md:text-base w-28 md:w-40 p-2 border rounded-lg"
                             value={filterName}
-                            onChange={(e) => setFilterName(e.target.value)}
-                            placeholder="Filter by player"
+                            dropdownOptions={playerNames}
+                            onChange={setFilterName}
                         />
                     </div>
                 }
