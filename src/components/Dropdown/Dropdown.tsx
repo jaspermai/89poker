@@ -22,7 +22,7 @@ export function Dropdown({ buttonClassName = '', value, dropdownOptions, onChang
             <DropdownMenuTrigger asChild>
                 <Button variant="outline" className={`${buttonClassName}`}>{value === '' ? 'Filter by Name' : value}</Button>
             </DropdownMenuTrigger>
-            <DropdownMenuContent className="w-56 bg-white text-black table-font">
+            <DropdownMenuContent className="w-56 bg-white text-black table-font max-h-60 md:max-h-80 overflow-y-auto">
                 <DropdownMenuLabel>Player</DropdownMenuLabel>
                 <DropdownMenuSeparator />
                 <DropdownMenuRadioGroup value={value} onValueChange={onChange}>

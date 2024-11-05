@@ -270,14 +270,6 @@ body {
   filter: blur(0px);
 }
 
-.filter-button-hover {
-  transition: transform 0.2s ease;
-}
-
-.filter-button-hover:hover {
-  transform: scale(1.1);
-}
-
 .dropdown-cell-hover {
   transition: transform 0.2s ease;
 }
