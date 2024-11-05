@@ -5,8 +5,5 @@ export default {
 		extend: {}
 	},
 	plugins: [],
-	future: {
-		hoverOnlyWhenSupported: true,
-	}
 }
 

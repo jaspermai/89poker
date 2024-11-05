@@ -20,7 +20,7 @@ export function Dropdown({ buttonClassName = '', value, dropdownOptions, onChang
     return (
         <DropdownMenu>
             <DropdownMenuTrigger asChild>
-                <Button variant="outline" className={`filter-button-hover ${buttonClassName}`}>{value === '' ? 'Filter by Name' : value}</Button>
+                <Button variant="outline" className={`${buttonClassName}`}>{value === '' ? 'Filter by Name' : value}</Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent className="w-56 bg-white text-black table-font">
                 <DropdownMenuLabel>Player</DropdownMenuLabel>
