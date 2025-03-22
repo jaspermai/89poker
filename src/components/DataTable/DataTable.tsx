@@ -76,14 +76,26 @@ export function DataTable({title, tableHeaders, tableBody, blurIndex, isMatchHis
                                         )}
                                         <TableRow key={rowIndex} className='border-none'>
                                             {Object.values(row).map((val, i) => (
-                                                <TableCell key={i} className={`table-cell-hover border-none ${blurIndex && blurIndex === i ? 'table-cell-blur' : '' }`}>
-                                                    {val}
-                                                    {i === 0 && (val?.toString() === '1' || val?.toString().startsWith('1 ')) ?
-                                                        <img
+                                                <TableCell key={i} className={`table-cell-hover border-none ${blurIndex && blurIndex === i ? 'table-cell-blur' : '' }`}> 
+                                                    {i === 0 ? (
+                                                        //  If i === 0, then check if val is 1 or starts with 1, then add star image
+                                                        <>
+                                                        {val}
+                                                        {(val?.toString() === '1' || val?.toString().startsWith('1 ')) && (
+                                                            <img
                                                             src='/star.png'
                                                             alt="star"
                                                             className="inline-block ml-1 align-middle"
-                                                        /> : null}
+                                                            />
+                                                        )}
+                                                        </>
+                                                    
+                                                    ) : i === 3 ? (
+                                                        // If i === 3, then round the number of games to the nearest multiple of 5 after 10 games
+                                                        Number(val) > 10 ? `${Math.floor(Number(val) / 5) * 5}+` : val
+                                                    ) : (
+                                                        val
+                                                    )}
                                                 </TableCell>
                                             ))}
                                         </TableRow>
